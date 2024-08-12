@@ -12,6 +12,7 @@
     &:disabled {
       &::-webkit-slider-thumb {
         border: 3px solid var(--color-second);
+        pointer-events: none;
       }
     }
   }
@@ -30,6 +31,10 @@
     &.isHover {
       opacity: 1;
       visibility: visible;
+    }
+    &.disabled {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }

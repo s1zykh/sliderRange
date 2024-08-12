@@ -6,9 +6,10 @@ import { SliderProps, ValueRangeType } from "../../shared/types";
 
 import cls from "./SliderRange.module.scss";
 import { useHover } from "../../shared/lib/useHover/useHover";
+import { Track } from "../../shared/ui/Track/Track";
 
 export const SliderRange = (props: SliderProps) => {
-  const { value, onChangeRangeValue, ...otherProps } = props;
+  const { value, disabled, onChangeRangeValue, ...otherProps } = props;
 
   const newValue = value as ValueRangeType;
 
@@ -41,7 +42,7 @@ export const SliderRange = (props: SliderProps) => {
   return (
     <div className={classNames(cls.slider_range)} {...hoverBind}>
       <div className="wrapper">
-        <div className="track" ref={trackRef}></div>
+        <Track trackRef={trackRef} disabled={disabled} />
         <Input
           name="min"
           inputRef={minInputRef}

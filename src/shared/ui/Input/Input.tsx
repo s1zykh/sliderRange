@@ -20,6 +20,7 @@ export const Input = (props: HTMLInputProps) => {
     trackRef,
     tooltipRef,
     label,
+    disabled,
     ...otherProps
   } = props;
 
@@ -52,13 +53,19 @@ export const Input = (props: HTMLInputProps) => {
         onChange={(e) => onSetValue?.(e)}
         max={max}
         min={min}
+        disabled={disabled}
         {...otherProps}
       />
       <div
-        className={classNames(cls.slider_tooltip, { [cls.isHover]: label })}
+        className={classNames(cls.slider_tooltip, {
+          [cls.isHover]: label,
+          [cls.disabled]: disabled,
+        })}
         ref={tooltipRef}
       >
-        <span className={classNames(cls.slider_tooltip_value)}>{value}</span>
+        <span className={classNames(cls.slider_tooltip_value, {})}>
+          {value}
+        </span>
       </div>
     </>
   );

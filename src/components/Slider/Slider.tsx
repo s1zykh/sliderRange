@@ -4,9 +4,10 @@ import { Input } from "../../shared/ui/Input/Input";
 
 import cls from "./Slider.module.scss";
 import { useHover } from "../../shared/lib/useHover/useHover";
+import { Track } from "../../shared/ui/Track/Track";
 
 export const Slider = (props: SliderProps) => {
-  const { value, onChangeValue, ...otherProps } = props;
+  const { value, onChangeValue, disabled = false, ...otherProps } = props;
 
   const InputRef = useRef(null) as MutableRefObject<HTMLInputElement | null>;
   const TooltipRef = useRef(null) as MutableRefObject<HTMLDivElement | null>;
@@ -24,7 +25,7 @@ export const Slider = (props: SliderProps) => {
   return (
     <div className={cls.slider} {...hoverBind}>
       <div className="wrapper">
-        <div className="track" ref={trackRef}></div>
+        <Track trackRef={trackRef} disabled={disabled} />
         <Input
           name="slider"
           value={newVal}
@@ -34,6 +35,7 @@ export const Slider = (props: SliderProps) => {
           inputRef={InputRef}
           tooltipRef={TooltipRef}
           onSetValue={handleChangeValue}
+          disabled={disabled}
           {...otherProps}
         />
       </div>

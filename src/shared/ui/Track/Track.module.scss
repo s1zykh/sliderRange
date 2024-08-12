@@ -1,0 +1,9 @@
+.track {
+  position: absolute;
+  height: 100%;
+  background-color: var(--color-first);
+  border-radius: 10px;
+  &.disabled {
+    background-color: var(--color-second);
+  }
+}
